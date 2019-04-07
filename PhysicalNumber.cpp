@@ -1,4 +1,4 @@
-#include "PhysicalNumber.hpp"
+#include "PhysicalNumber.h"
 
 using namespace std;
 using ariel::Unit;
