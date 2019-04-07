@@ -1,61 +1,117 @@
 #include "PhysicalNumber.h"
+#include "Unit.h"
 
 using namespace std;
 using ariel::Unit;
 using ariel::PhysicalNumber;
 
-ariel::PhysicalNumber::PhysicalNumber(double val, Unit cat)
+PhysicalNumber::PhysicalNumber(const double val, const Unit cat)
 {
 	this->value = val;
 	this->category = cat;
 }
-PhysicalNumber &operator + (PhysicalNumber &b)
+
+PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
 {
-	return b;
+	this->category = copy.category;
+	this->value = copy.value;
 }
-PhysicalNumber &operator += (PhysicalNumber &b)
+
+ const PhysicalNumber ariel::PhysicalNumber::operator+(const PhysicalNumber & b) const
+ {
+	 double num = 3.3;
+	return PhysicalNumber(num, this->category);
+}
+
+ const PhysicalNumber ariel::PhysicalNumber::operator-(const PhysicalNumber & b) const
 {
-	return b;
+	 double num = 3.3;
+	 return PhysicalNumber(num, this->category);
 }
-PhysicalNumber &operator - (PhysicalNumber &b)
+
+ const PhysicalNumber ariel::PhysicalNumber::operator-() const
 {
-	return b;
+	 double num = 3.3;
+	 return PhysicalNumber(num, this->category);
 }
-PhysicalNumber &operator -= (PhysicalNumber &b)
+
+ const PhysicalNumber ariel::PhysicalNumber::operator+() const
 {
-	return b;
+	 double num = 3.3;
+	 return PhysicalNumber(num, this->category);
 }
-PhysicalNumber &operator = (PhysicalNumber &b)
+
+PhysicalNumber & ariel::PhysicalNumber::operator=(const PhysicalNumber & b)
 {
-	return b;
+	return *this;
 }
-bool &operator >= (PhysicalNumber &b)
+
+PhysicalNumber & ariel::PhysicalNumber::operator+=(const PhysicalNumber & b)
 {
-	return true;
+	return *this;
 }
-bool &operator > (PhysicalNumber &b)
+
+PhysicalNumber & ariel::PhysicalNumber::operator-=(const PhysicalNumber & b)
 {
-	return true;
+	return *this;
 }
-bool &operator <= (PhysicalNumber &b)
+
+bool ariel::PhysicalNumber::operator>=(const PhysicalNumber & b) const
 {
-	return true;
+	return false;
 }
-bool &operator < (PhysicalNumber &b)
+
+bool ariel::PhysicalNumber::operator>(const PhysicalNumber & b) const
 {
-	return true;
+	return false;
 }
-bool &operator == (PhysicalNumber &b)
+
+bool ariel::PhysicalNumber::operator<=(const PhysicalNumber & b) const
 {
-	return true;
+	return false;
 }
-PhysicalNumber &operator ++ ()
+
+bool ariel::PhysicalNumber::operator<(const PhysicalNumber & b) const
 {
-	return this;
+	return false;
 }
-PhysicalNumber &operator -- ()
+
+bool ariel::PhysicalNumber::operator==(const PhysicalNumber & b) const
 {
-	return this;
+	return false;
 }
-friend istream &operator << (istream &input, PhysicalNumber &phy);
-friend ostream &operator <<(ostream &out, PhysicalNumber &phy);
+
+bool ariel::PhysicalNumber::operator!=(const PhysicalNumber & b) const
+{
+	return false;
+}
+
+ PhysicalNumber & ariel::PhysicalNumber::operator++()
+{
+	return *this;
+}
+
+ PhysicalNumber ariel::PhysicalNumber::operator++(int  n)
+{
+	return *this;
+}
+
+ PhysicalNumber & ariel::PhysicalNumber::operator--()
+{
+	return *this;
+}
+
+ PhysicalNumber ariel::PhysicalNumber::operator--(int n)
+{
+	return *this;
+}
+
+istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
+{
+	return input;
+}
+
+ostream & ariel::operator<<(ostream & out,const PhysicalNumber & phy)
+{
+	return (out<<phy.value<<"["<<phy.category<<"]");
+}
