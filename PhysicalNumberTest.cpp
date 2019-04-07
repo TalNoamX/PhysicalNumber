@@ -73,22 +73,22 @@ int main() {
 		.CHECK_OUTPUT(m_length++, "101[m]")
 		.CHECK_OUTPUT(sec_time--, "149[sec]")
 		.CHECK_OUTPUT(km_length++, "2[km]")
-		.CHECK_OUTPUT(km_length+= m_length, "2.101[km]")
-		.CHECK_OUTPUT(m_time-=sec_time, "22.5[m]")
+		.CHECK_OUTPUT((km_length+= m_length), "2.101[km]")
+		.CHECK_OUTPUT((m_time-=sec_time), "22.5[m]")
 
 
 		.setname("second")
 		.CHECK_THROWS(cm_length+ton)
-		.CHECK_THROWS(sec+km_length)
+		.CHECK_THROWS(sec_time+km_length)
 		.CHECK_THROWS(m_time + m_length)
 		.CHECK_THROWS(kg + sec_time)
-		.CHECK_THROWS(sec + kg)
+		.CHECK_THROWS(sec_time + kg)
 
 		.setname("third")
 		.CHECK_OK(istringstream("700[kg]") >> kg)
 		.CHECK_OK(istringstream("100[m]") >> m_time)
 		.CHECK_OK(istringstream("2[ton]") >> ton)
-		.CHECK_OK(istringstream("7[sec]") >> sec)
+		.CHECK_OK(istringstream("7[sec_time]") >> sec)
 
 		
 
