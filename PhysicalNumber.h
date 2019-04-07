@@ -1,5 +1,7 @@
 #include <exception>
+#include <exception>
 #include<iostream>
+#include<string>
 #include "Unit.h"
 using namespace std;
 namespace ariel {
@@ -10,9 +12,9 @@ namespace ariel {
 
 	public:
 		PhysicalNumber(double x, Unit cat); //contractor from a number value and a Unit value
-		PhysicalNumber &operator + (PhysicalNumber &b); //function of '+' operator between 2 Phsical numbers
+		PhysicalNumber operator + (PhysicalNumber &b); //function of '+' operator between 2 Phsical numbers
 		PhysicalNumber &operator += (PhysicalNumber &b); //add Physical number to another
-		PhysicalNumber &operator - (PhysicalNumber &b); // sub '-' operator function between two Physical numbers
+		friend PhysicalNumber operator - (PhysicalNumber &b); // sub '-' operator function between two Physical numbers
 		PhysicalNumber &operator -= (PhysicalNumber &b); // sub Pysical number from another
 		PhysicalNumber &operator = (PhysicalNumber &b); // the operator '=' function
 		bool &operator >= (PhysicalNumber &b); //bool function of operator '>='
@@ -24,6 +26,5 @@ namespace ariel {
 		PhysicalNumber &operator -- (); //the function of operator '--' that sub 1 from Physical number
 		friend istream &operator << (istream &input, PhysicalNumber &phy); //a istream operator '<<' function to get an input to a Physical number
 		friend ostream &operator <<(ostream &out, PhysicalNumber &phy); //a ostream operator '>>' function to get an output from a Physical number
-
 	};
 }
