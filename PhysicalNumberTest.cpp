@@ -24,6 +24,18 @@ int main() {
     PhysicalNumber c(2, Unit::HOUR);
     PhysicalNumber d(30, Unit::MIN);
 
+	//OUR TESTS
+	PhysicalNumber cm_length(500, Unit::CM);
+	PhysicalNumber km_length(2, Unit::CM);
+	PhysicalNumber m_length(100, Unit::CM);
+	PhysicalNumber sec_time(150, Unit::CM);
+	PhysicalNumber m_time(25, Unit::CM);
+	PhysicalNumber h_time(4, Unit::CM);
+	PhysicalNumber ton(1, Unit::TON);
+	PhysicalNumber kg(500, Unit::KG);
+
+
+
     testcase
     .setname("Basic output")
     .CHECK_OUTPUT(a, "2[km]")
@@ -51,7 +63,34 @@ int main() {
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
 
-      .setname("...")
+      .setname("first")
+		.CHECK_OUTPUT(cm_length,"500[m]")
+		.CHECK_OUTPUT(cm_length+km_length, "2500[m]")
+		.CHECK_OUTPUT(sec_time+m_time, "1650[sec]")
+		.CHECK_OUTPUT(m_time+sec_time, "27.5[m]")
+		.CHECK_OUTPUT(ton-kg, "0.5[kg]")
+		.CHECK_OUTPUT(km_length--, "1[km]")
+		.CHECK_OUTPUT(m_length++, "101[m]")
+		.CHECK_OUTPUT(sec_time--, "149[sec]")
+		.CHECK_OUTPUT(km_length++, "2[km]")
+		.CHECK_OUTPUT(km_length+= m_length, "2.101[km]")
+		.CHECK_OUTPUT(m_time-=sec_time, "22.5[m]")
+
+
+		.setname("second")
+		.CHECK_THROWS(cm_length+ton)
+		.CHECK_THROWS(sec+km_length)
+		.CHECK_THROWS(m_time + m_length)
+		.CHECK_THROWS(kg + sec_time)
+		.CHECK_THROWS(sec + kg)
+
+		.setname("third")
+		.CHECK_OK(istringstream("700[kg]") >> kg)
+		.CHECK_OK(istringstream("100[m]") >> m_time)
+		.CHECK_OK(istringstream("2[ton]") >> ton)
+		.CHECK_OK(istringstream("7[sec]") >> sec)
+
+		
 
       .print(cout, /*show_grade=*/false);
       grade = testcase.grade();
