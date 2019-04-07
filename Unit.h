@@ -6,14 +6,27 @@ using std::string;
 namespace ariel {
 
 	enum  Unit {
-		//length units
-		CM, M, KM, //CM = 0,M = 1, KM = 2
+		//every unit get the same quivalence relation mod 3.
+		/*
+		this part represent distance units
+		*/
+		CM = 0,
+		M = 3,
+		KM = 6,
 
-		//time unis
-		SEC, MIN, HOUR, // SEC = 3, MIN = 4, HOUER = 5
+		/*
+		this part represent time units
+		*/
+		SEC = 1,
+		MIN = 4,
+		HOUR = 7,
 
-	// mass units
-	G, KG, TON // G = 6, KG = 7, TON = 8
+		/*
+		this part represent weight units
+		*/
+		G = 2,
+		KG = 5,
+		TON = 8
 
 	};
 
