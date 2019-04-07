@@ -88,7 +88,7 @@ int main() {
 		.CHECK_OK(istringstream("700[kg]") >> kg)
 		.CHECK_OK(istringstream("100[m]") >> m_time)
 		.CHECK_OK(istringstream("2[ton]") >> ton)
-		.CHECK_OK(istringstream("7[sec_time]") >> sec)
+		
 
 		
 
