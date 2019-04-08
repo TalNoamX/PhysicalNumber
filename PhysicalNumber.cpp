@@ -19,26 +19,36 @@ PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
 
  const PhysicalNumber ariel::PhysicalNumber::operator+(const PhysicalNumber & b) const
  {
-	 double num = 3.3;
-	return PhysicalNumber(num, this->category);
+	 if (this->category % 3 == b.category % 3)
+	 {
+		 return PhysicalNumber(this->value+(b.value*(conversion[b.category]/conversion[this->category])), this->category);
+	 }
+	 else
+	 {
+		 throw invalid_argument("invalid action: can not add diffrent physical unit");
+	 }
 }
 
  const PhysicalNumber ariel::PhysicalNumber::operator-(const PhysicalNumber & b) const
 {
-	 double num = 3.3;
-	 return PhysicalNumber(num, this->category);
+	 if (this->category % 3 == b.category % 3)
+	 {
+		 return PhysicalNumber(this->value - (b.value*(conversion[b.category] / conversion[this->category])), this->category);
+	 }
+	 else
+	 {
+		 throw invalid_argument("invalid action: can not add diffrent physical unit");
+	 }
 }
 
  const PhysicalNumber ariel::PhysicalNumber::operator-() const
 {
-	 double num = 3.3;
-	 return PhysicalNumber(num, this->category);
+	 return PhysicalNumber(-this->value, this->category);
 }
 
  const PhysicalNumber ariel::PhysicalNumber::operator+() const
 {
-	 double num = 3.3;
-	 return PhysicalNumber(num, this->category);
+	 return PhysicalNumber(+this->value, this->category);
 }
 
 PhysicalNumber & ariel::PhysicalNumber::operator=(const PhysicalNumber & b)
@@ -113,5 +123,5 @@ istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 
 ostream & ariel::operator<<(ostream & out,const PhysicalNumber & phy)
 {
-	return (out<<phy.value<<"["<<phy.category<<"]");
+	return (out<<phy.value<<"["<<type[phy.category]<<"]");
 }

@@ -130,7 +130,7 @@ int main() {
 		.CHECK_OUTPUT((-m_time), "-26[min]")
 		.CHECK_OUTPUT((-m_time), "26[min]")
 		.CHECK_OUTPUT((-sec_time), "-58[sec]")
-		.CHECK_OUTPUT((-h_time), "-20[min]")
+		.CHECK_OUTPUT((-h_time), "-4[hour]")
 
 
 		
