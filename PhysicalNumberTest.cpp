@@ -26,11 +26,11 @@ int main() {
 
 	//OUR TESTS
 	PhysicalNumber cm_length(500, Unit::CM);
-	PhysicalNumber km_length(2, Unit::CM);
-	PhysicalNumber m_length(100, Unit::CM);
-	PhysicalNumber sec_time(150, Unit::CM);
-	PhysicalNumber m_time(25, Unit::CM);
-	PhysicalNumber h_time(4, Unit::CM);
+	PhysicalNumber km_length(2, Unit::KM);
+	PhysicalNumber m_length(100, Unit::M);
+	PhysicalNumber sec_time(150, Unit::SEC);
+	PhysicalNumber m_time(25, Unit::MIN);
+	PhysicalNumber h_time(4, Unit::HOUR);
 	PhysicalNumber ton(1, Unit::TON);
 	PhysicalNumber kg(500, Unit::KG);
 
