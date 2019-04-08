@@ -36,58 +36,63 @@ int main() {
 
 
 
-    testcase
-    .setname("Basic output")
-    .CHECK_OUTPUT(a, "2[km]")
-    .CHECK_OUTPUT(b, "300[m]")
+	testcase
+		.setname("Basic output")
+		.CHECK_OUTPUT(a, "2[km]")
+		.CHECK_OUTPUT(b, "300[m]")
 
-    .setname("Compatible dimensions")
-    .CHECK_OUTPUT(b+a, "2300[m]")
-    .CHECK_OUTPUT((a+=b), "2.3[km]")
-    .CHECK_OUTPUT(a, "2.3[km]")
-    .CHECK_OUTPUT(a+a, "4.6[km]")
-    .CHECK_OUTPUT(b-b, "0[m]")
-    .CHECK_OUTPUT(c, "2[hour]")
-    .CHECK_OUTPUT(d, "30[min]")
-    .CHECK_OUTPUT(d+c, "150[min]")
+		.setname("Compatible dimensions")
+		.CHECK_OUTPUT(b + a, "2300[m]")
+		.CHECK_OUTPUT((a += b), "2.3[km]")
+		.CHECK_OUTPUT(a, "2.3[km]")
+		.CHECK_OUTPUT(a + a, "4.6[km]")
+		.CHECK_OUTPUT(b - b, "0[m]")
+		.CHECK_OUTPUT(c, "2[hour]")
+		.CHECK_OUTPUT(d, "30[min]")
+		.CHECK_OUTPUT(d + c, "150[min]")
 
-    .setname("Incompatible dimensions")
-    .CHECK_THROWS(a+c)
-    .CHECK_THROWS(a+d)
-    .CHECK_THROWS(b+c)
-    .CHECK_THROWS(b+d)
+		.setname("Incompatible dimensions")
+		.CHECK_THROWS(a + c)
+		.CHECK_THROWS(a + d)
+		.CHECK_THROWS(b + c)
+		.CHECK_THROWS(b + d)
 
-    .setname("Basic input")
-    .CHECK_OK(istringstream("700[kg]") >> a)
-    .CHECK_OUTPUT((a += PhysicalNumber(1, Unit::TON)), "1700[kg]")
+		.setname("Basic input")
+		.CHECK_OK(istringstream("700[kg]") >> a)
+		.CHECK_OUTPUT((a += PhysicalNumber(1, Unit::TON)), "1700[kg]")
 
-    // YOUR TESTS - INSERT AS MANY AS YOU WANT
+		// YOUR TESTS - INSERT AS MANY AS YOU WANT
 
-      .setname("first")
-		.CHECK_OUTPUT(cm_length,"500[m]")
-		.CHECK_OUTPUT(cm_length+km_length, "2500[m]")
-		.CHECK_OUTPUT(sec_time+m_time, "1650[sec]")
-		.CHECK_OUTPUT(m_time+sec_time, "27.5[m]")
-		.CHECK_OUTPUT(ton-kg, "0.5[kg]")
+		.setname("first")
+		.CHECK_OUTPUT(cm_length, "500[m]")
+		.CHECK_OUTPUT(cm_length + km_length, "2500[m]")
+		.CHECK_OUTPUT(sec_time + m_time, "1650[sec]")
+		.CHECK_OUTPUT(m_time + sec_time, "27.5[m]")
+		.CHECK_OUTPUT(ton - kg, "0.5[kg]")
 		.CHECK_OUTPUT(km_length--, "1[km]")
 		.CHECK_OUTPUT(m_length++, "101[m]")
 		.CHECK_OUTPUT(sec_time--, "149[sec]")
 		.CHECK_OUTPUT(km_length++, "2[km]")
-		.CHECK_OUTPUT((km_length+= m_length), "2.101[km]")
-		.CHECK_OUTPUT((m_time-=sec_time), "22.5[m]")
-		
+		.CHECK_OUTPUT((km_length += m_length), "2.101[km]")
+		.CHECK_OUTPUT((m_time -= sec_time), "22.5[m]")
+
 
 		.setname("second")
-		.CHECK_THROWS(cm_length+ton)
-		.CHECK_THROWS(sec_time+km_length)
+		.CHECK_THROWS(cm_length + ton)
+		.CHECK_THROWS(sec_time + km_length)
 		.CHECK_THROWS(m_time + m_length)
 		.CHECK_THROWS(kg + sec_time)
-		.CHECK_THROWS(sec_time+ton)
+		.CHECK_THROWS(sec_time + ton)
 		.CHECK_THROWS(kg + km_length)
 		.CHECK_THROWS(m_time + m_length)
 		.CHECK_THROWS(ton + h_time)
 		.CHECK_THROWS(h_time + m_length)
 		.CHECK_THROWS(km_length + h_time)
+		.CHECK_THROWS(kg - km_length)
+		.CHECK_THROWS(m_time - m_length)
+		.CHECK_THROWS(ton - h_time)
+		.CHECK_THROWS(h_time - m_length)
+		.CHECK_THROWS(km_length - h_time)
 
 		.setname("third")
 		.CHECK_OK(istringstream("700[kg]") >> kg)
@@ -99,7 +104,7 @@ int main() {
 		.CHECK_OK(istringstream("1[ton]") >> ton)
 		
 
-		setname("fourth")
+		.setname("fourth")
 
 		.CHECK_OUTPUT(cm_length + km_length, "400050[cm]")
 		.CHECK_OUTPUT(sec_time + m_time, "1560[cm]")
@@ -110,13 +115,22 @@ int main() {
 		.CHECK_OUTPUT(m_time + h_time, "1161[min]")
 		
 		
-		setname("five")
+		.setname("five")
 
 		.CHECK_OUTPUT((--sec_time), "59[sec]")
 		.CHECK_OUTPUT((sec_time--), "59[sec]")
 		.CHECK_OUTPUT((++kg), "701[kg]")
 		.CHECK_OUTPUT((m_time++), "25[min]")
-		
+		.CHECK_THROWS(cm_length + ton)
+		.CHECK_THROWS(kg + sec_time)
+		.CHECK_THROWS(h_time + cm_length)
+		.CHECK_THROWS(cm_length + h_time)
+		.CHECK_THROWS(km_length + kg)
+		.CHECK_THROWS(m_length + ton)
+		.CHECK_OUTPUT((-m_time), "-26[min]")
+		.CHECK_OUTPUT((-m_time), "26[min]")
+		.CHECK_OUTPUT((-sec_time), "-58[sec]")
+		.CHECK_OUTPUT((-h_time), "-20[min]")
 
 
 		
