@@ -75,20 +75,49 @@ int main() {
 		.CHECK_OUTPUT(km_length++, "2[km]")
 		.CHECK_OUTPUT((km_length+= m_length), "2.101[km]")
 		.CHECK_OUTPUT((m_time-=sec_time), "22.5[m]")
-
+		
 
 		.setname("second")
 		.CHECK_THROWS(cm_length+ton)
 		.CHECK_THROWS(sec_time+km_length)
 		.CHECK_THROWS(m_time + m_length)
 		.CHECK_THROWS(kg + sec_time)
-		.CHECK_THROWS(sec_time + kg)
+		.CHECK_THROWS(sec_time+ton)
+		.CHECK_THROWS(kg + km_length)
+		.CHECK_THROWS(m_time + m_length)
+		.CHECK_THROWS(ton + h_time)
+		.CHECK_THROWS(h_time + m_length)
+		.CHECK_THROWS(km_length + h_time)
 
 		.setname("third")
 		.CHECK_OK(istringstream("700[kg]") >> kg)
-		.CHECK_OK(istringstream("100[m]") >> m_time)
+		.CHECK_OK(istringstream("4[km]") >> km_length)
+		.CHECK_OK(istringstream("60[sec]") >> sec_time)
+		.CHECK_OK(istringstream("25[min]") >> m_time)
+		.CHECK_OK(istringstream("50[cm]") >> cm_length)
+		.CHECK_OK(istringstream("20[hour]") >> h_time)
+		.CHECK_OK(istringstream("1[ton]") >> ton)
+		
+
+		setname("fourth")
+
+		.CHECK_OUTPUT(cm_length + km_length, "400050[cm]")
+		.CHECK_OUTPUT(sec_time + m_time, "1560[cm]")
+		.CHECK_OUTPUT(ton + kg, "1.7[ton]")
+		.CHECK_OUTPUT(km_length + cm_length, "4.0005[km]")
+		.CHECK_OUTPUT(h_time - m_time, "19.35[hour]")
+		.CHECK_OUTPUT(kg + ton ,"1700[kg]")
+		.CHECK_OUTPUT(m_time + h_time, "1161[min]")
 		
 		
+		setname("five")
+
+		.CHECK_OUTPUT((--sec_time), "59[sec]")
+		.CHECK_OUTPUT((sec_time--), "59[sec]")
+		.CHECK_OUTPUT((++kg), "701[kg]")
+		.CHECK_OUTPUT((m_time++), "25[min]")
+		
+
 
 		
 
