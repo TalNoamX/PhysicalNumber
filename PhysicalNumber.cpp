@@ -5,6 +5,15 @@ using namespace std;
 using ariel::Unit;
 using ariel::PhysicalNumber;
 
+bool ariel::PhysicalNumber::sameType(const PhysicalNumber & b) const
+{
+	if (this->category % 3 == b.category % 3)
+	{
+		return true;
+	}
+	else return false;
+}
+
 PhysicalNumber::PhysicalNumber(const double val, const Unit cat)
 {
 	this->value = val;
@@ -19,7 +28,7 @@ PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
 
  const PhysicalNumber ariel::PhysicalNumber::operator+(const PhysicalNumber & b) const
  {
-	 if (this->category % 3 == b.category % 3)
+	 if (sameType(b))
 	 {
 		 return PhysicalNumber(this->value+(b.value*(conversion[b.category]/conversion[this->category])), this->category);
 	 }
@@ -31,13 +40,13 @@ PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
 
  const PhysicalNumber ariel::PhysicalNumber::operator-(const PhysicalNumber & b) const
 {
-	 if (this->category % 3 == b.category % 3)
+	 if (sameType(b))
 	 {
 		 return PhysicalNumber(this->value - (b.value*(conversion[b.category] / conversion[this->category])), this->category);
 	 }
 	 else
 	 {
-		 throw invalid_argument("invalid action: can not add diffrent physical unit");
+		 throw invalid_argument("invalid action: can not subtract diffrent physical unit");
 	 }
 }
 
@@ -68,31 +77,97 @@ PhysicalNumber & ariel::PhysicalNumber::operator-=(const PhysicalNumber & b)
 
 bool ariel::PhysicalNumber::operator>=(const PhysicalNumber & b) const
 {
+	if (sameType(b))
+	{
+		if (this->value >= b.value*(conversion[b.category] / conversion[this->category]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	return false;
 }
 
 bool ariel::PhysicalNumber::operator>(const PhysicalNumber & b) const
 {
+	if (sameType(b))
+	{
+		if (this->value > b.value*(conversion[b.category] / conversion[this->category]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	return false;
 }
 
 bool ariel::PhysicalNumber::operator<=(const PhysicalNumber & b) const
 {
+	if (sameType(b))
+	{
+		if (this->value <= b.value*(conversion[b.category] / conversion[this->category]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	return false;
 }
 
 bool ariel::PhysicalNumber::operator<(const PhysicalNumber & b) const
 {
+	if (sameType(b))
+	{
+		if (this->value < b.value*(conversion[b.category] / conversion[this->category]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	return false;
 }
 
 bool ariel::PhysicalNumber::operator==(const PhysicalNumber & b) const
 {
+	if (sameType(b))
+	{
+		if (this->value == b.value*(conversion[b.category] / conversion[this->category]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	return false;
 }
 
 bool ariel::PhysicalNumber::operator!=(const PhysicalNumber & b) const
 {
+	if (sameType(b))
+	{
+		if (this->value != b.value*(conversion[b.category] / conversion[this->category]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	return false;
 }
 

@@ -9,6 +9,7 @@ namespace ariel {
 	class PhysicalNumber {
 		double value; //the number value of the phtsical number
 		Unit category;
+		bool sameType(const PhysicalNumber &b)const;
 
 
 	public:
