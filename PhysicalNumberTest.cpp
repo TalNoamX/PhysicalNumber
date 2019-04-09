@@ -93,6 +93,17 @@ int main() {
 		.CHECK_THROWS(ton - h_time)
 		.CHECK_THROWS(h_time - m_length)
 		.CHECK_THROWS(km_length - h_time)
+		.CHECK_THROWS(istringstream("1[on]") >> ton)
+		.CHECK_THROWS(istringstream("1ton") >> ton)
+		.CHECK_THROWS(istringstream("23[cmm]") >> cm_length)
+		.CHECK_THROWS(istringstream("1[k]") >> kg)
+		.CHECK_THROWS(istringstream("1") >> sec_time)
+		.CHECK_THROWS(istringstream("mnh") >> m_length)
+		.CHECK_THROWS(istringstream("1[  ton  ]") >> ton)
+		.CHECK_THROWS(istringstream("14kg") >> kg)
+		.CHECK_THROWS(istringstream("strrrrrdfsfs") >> m_length)
+		.CHECK_THROWS(istringstream("[[12]]") >> kg)
+		.CHECK_THROWS(istringstream("1[min]") >> sec_time)
 
 		.setname("third")
 		.CHECK_OK(istringstream("700[kg]") >> kg)
@@ -131,6 +142,12 @@ int main() {
 		.CHECK_OUTPUT((-m_time), "26[min]")
 		.CHECK_OUTPUT((-sec_time), "-58[sec]")
 		.CHECK_OUTPUT((-h_time), "-4[hour]")
+		.CHECK_OUTPUT((+m_time), "26[min]")
+		.CHECK_OUTPUT((+m_time), "26[min]")
+		.CHECK_OUTPUT((+sec_time), "58[sec]")
+		.CHECK_OUTPUT((+h_time), "20[min]")
+
+
 
 
 		
