@@ -33,7 +33,10 @@ PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
  {
 	 if (sameType(b))
 	 {
-		 return PhysicalNumber(this->value+b.value*(conversion[b.category]/conversion[this->category]), this->category);
+		 double num = b.value*(conversion[b.category] / conversion[this->category]);
+		 num = num + this->value;
+
+		 return PhysicalNumber(num, this->category);
 	 }
 	 else
 	 {
@@ -45,6 +48,8 @@ PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
 {
 	 if (sameType(b))
 	 {
+		 double num = b.value*(conversion[b.category] / conversion[this->category]);
+		 num = this->value - num;
 		 return PhysicalNumber(this->value - (b.value*(conversion[b.category] / conversion[this->category])), this->category);
 	 }
 	 else
@@ -171,24 +176,28 @@ bool ariel::PhysicalNumber::operator!=(const PhysicalNumber & b) const
 
  PhysicalNumber & ariel::PhysicalNumber::operator++()
 {
-	value++;
+	 ++this->value;
 	return *this;
 }
 
- PhysicalNumber ariel::PhysicalNumber::operator++(int n)
+ PhysicalNumber ariel::PhysicalNumber::operator++(int value)
 {
-	return *this;
+	 PhysicalNumber corrent(*this);
+	 this->value++;
+	 return corrent;
 }
 
  PhysicalNumber & ariel::PhysicalNumber::operator--()
 {
-	value--;
+	--this->value;
 	return *this;
 }
 
- PhysicalNumber ariel::PhysicalNumber::operator--(int n)
+ PhysicalNumber ariel::PhysicalNumber::operator--(int value)
 {
-	return *this;
+	 PhysicalNumber corrent(*this);
+	 this->value--;
+	 return corrent;
 }
 
 istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)

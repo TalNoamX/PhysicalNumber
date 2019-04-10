@@ -5,7 +5,7 @@
 using std::string;
 namespace ariel {
 
-	const int conversion[9] = { 1, 1, 1, 100, 60, 1000, 100000, 3600, 1000000 };
+	const double conversion[9] = { 1, 1, 1, 100, 60, 1000, 100000, 3600, 1000000 };
 	const string type[9] = { "cm","sec","g","m","min","kg","km","hour","ton" };
 
 	enum  Unit {
