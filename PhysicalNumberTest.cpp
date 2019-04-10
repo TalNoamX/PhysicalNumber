@@ -65,11 +65,11 @@ int main() {
 
 		// YOUR TESTS - INSERT AS MANY AS YOU WANT
 
-		/setname("Boolean")
-		.CHECK_OUTPUT(sec_bool == min_bool, "true")
-		.CHECK_OUTPUT(sec_bool >= min_bool, "true")
-		.CHECK_OUTPUT(sec_bool < min_bool, "false")
-		.CHECK_OUTPUT(min_bool > sec_bool, "false")
+		.setname("Boolean")
+		.CHECK_EQUAL(sec_bool == min_bool, true)
+		.CHECK_EQUAL(sec_bool >= min_bool, true)
+		.CHECK_EQUAL(sec_bool < min_bool, false)
+		.CHECK_EQUAL(min_bool > sec_bool, false)
 	
 
 		.setname("first")
