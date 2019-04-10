@@ -173,16 +173,19 @@ bool ariel::PhysicalNumber::operator!=(const PhysicalNumber & b) const
 
  PhysicalNumber & ariel::PhysicalNumber::operator++()
 {
+	 this->value = this->value + 1;
 	return *this;
 }
 
  PhysicalNumber ariel::PhysicalNumber::operator++(int  n)
 {
+	 
 	return *this;
 }
 
  PhysicalNumber & ariel::PhysicalNumber::operator--()
 {
+	 this->value = this->value - 1;
 	return *this;
 }
 
