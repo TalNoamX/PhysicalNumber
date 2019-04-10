@@ -221,6 +221,7 @@ istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 {
 	//input >> phy.value >> phy.category;
 	return input;
+
 }
 
 ostream & ariel::operator<<(ostream & out,const PhysicalNumber & phy)
