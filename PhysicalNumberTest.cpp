@@ -81,6 +81,7 @@ int main() {
 		.CHECK_OUTPUT(km_length--, "2[km]")
 		.CHECK_OUTPUT(m_length++, "100[m]")
 		.CHECK_OUTPUT(sec_time--, "150[sec]")
+		.CHECK_OUTPUT(++sec_time, "150[sec]")
 		.CHECK_OUTPUT(km_length++, "1[km]")
 		.CHECK_OUTPUT((km_length += m_length), "2.101[km]")
 		.CHECK_OUTPUT((m_time -= sec_time), "22.5[min]")

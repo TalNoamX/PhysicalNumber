@@ -70,12 +70,29 @@ PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
 
 PhysicalNumber & ariel::PhysicalNumber::operator+=(const PhysicalNumber & b)
 {
-	return *this;
+	if (sameType(b))
+	{
+		this->value += b.value*(conversion[b.category] / conversion[this->category]);
+		return *this;
+	}
+	else
+	{
+		throw invalid_argument("invalid action: can not add diffrent physical unit");
+	}
+	
 }
 
 PhysicalNumber & ariel::PhysicalNumber::operator-=(const PhysicalNumber & b)
 {
-	return *this;
+	if (sameType(b))
+	{
+		this->value -= b.value*(conversion[b.category] / conversion[this->category]);
+		return *this;
+	}
+	else
+	{
+		throw invalid_argument("invalid action: can not subtract diffrent physical unit");
+	}
 }
 
 bool ariel::PhysicalNumber::operator>=(const PhysicalNumber & b) const
@@ -202,6 +219,7 @@ bool ariel::PhysicalNumber::operator!=(const PhysicalNumber & b) const
 
 istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 {
+	//input >> phy.value >> phy.category;
 	return input;
 }
 
