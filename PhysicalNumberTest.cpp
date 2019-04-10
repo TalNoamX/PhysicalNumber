@@ -70,6 +70,11 @@ int main() {
 		.CHECK_EQUAL(sec_bool >= min_bool, true)
 		.CHECK_EQUAL(sec_bool < min_bool, false)
 		.CHECK_EQUAL(min_bool > sec_bool, false)
+		.CHECK_EQUAL(m_length > km_length, false)
+		.CHECK_EQUAL(sec_time > sec_bool, true)
+		.CHECK_EQUAL(ton == kg, false)
+		.CHECK_EQUAL(cm_length >= m_length, false)
+		.CHECK_EQUAL(sec_time <= sec_bool, false)
 	
 
 		.setname("first")
