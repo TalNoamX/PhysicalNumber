@@ -64,15 +64,15 @@ int main() {
 		// YOUR TESTS - INSERT AS MANY AS YOU WANT
 
 		.setname("first")
-		.CHECK_OUTPUT(cm_length, "500[m]")
-		.CHECK_OUTPUT(cm_length + km_length, "2500[m]")
+		.CHECK_OUTPUT(cm_length, "500[cm]")
+		.CHECK_OUTPUT(cm_length + km_length, "200500[cm]")
 		.CHECK_OUTPUT(sec_time + m_time, "1650[sec]")
 		.CHECK_OUTPUT(m_time + sec_time, "27.5[min]")
-		.CHECK_OUTPUT(ton - kg, "0.5[kg]")
-		.CHECK_OUTPUT(km_length--, "1[km]")
-		.CHECK_OUTPUT(m_length++, "101[m]")
-		.CHECK_OUTPUT(sec_time--, "149[sec]")
-		.CHECK_OUTPUT(km_length++, "2[km]")
+		.CHECK_OUTPUT(ton - kg, "0.5[ton]")
+		.CHECK_OUTPUT(km_length--, "2[km]")
+		.CHECK_OUTPUT(m_length++, "100[m]")
+		.CHECK_OUTPUT(sec_time--, "150[sec]")
+		.CHECK_OUTPUT(km_length++, "1[km]")
 		.CHECK_OUTPUT((km_length += m_length), "2.101[km]")
 		.CHECK_OUTPUT((m_time -= sec_time), "22.5[min]")
 

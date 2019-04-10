@@ -11,7 +11,10 @@ bool ariel::PhysicalNumber::sameType(const PhysicalNumber & b) const
 	{
 		return true;
 	}
-	else return false;
+	else
+	{
+		return false;
+	}
 }
 
 PhysicalNumber::PhysicalNumber(const double val, const Unit cat)
@@ -30,7 +33,7 @@ PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
  {
 	 if (sameType(b))
 	 {
-		 return PhysicalNumber(this->value+(b.value*(conversion[b.category]/conversion[this->category])), this->category);
+		 return PhysicalNumber(this->value+b.value*(conversion[b.category]/conversion[this->category]), this->category);
 	 }
 	 else
 	 {
@@ -58,11 +61,6 @@ PhysicalNumber::PhysicalNumber(const PhysicalNumber & copy)
  const PhysicalNumber ariel::PhysicalNumber::operator+() const
 {
 	 return PhysicalNumber(+this->value, this->category);
-}
-
-PhysicalNumber & ariel::PhysicalNumber::operator=(const PhysicalNumber & b)
-{
-	return *this;
 }
 
 PhysicalNumber & ariel::PhysicalNumber::operator+=(const PhysicalNumber & b)
@@ -173,19 +171,18 @@ bool ariel::PhysicalNumber::operator!=(const PhysicalNumber & b) const
 
  PhysicalNumber & ariel::PhysicalNumber::operator++()
 {
-	 this->value = this->value + 1;
+	value++;
 	return *this;
 }
 
- PhysicalNumber ariel::PhysicalNumber::operator++(int  n)
+ PhysicalNumber ariel::PhysicalNumber::operator++(int n)
 {
-	 
 	return *this;
 }
 
  PhysicalNumber & ariel::PhysicalNumber::operator--()
 {
-	 this->value = this->value - 1;
+	value--;
 	return *this;
 }
 

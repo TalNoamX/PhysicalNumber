@@ -21,7 +21,6 @@ namespace ariel {
 		const PhysicalNumber operator - ()const;
 		const PhysicalNumber operator + ()const;
 
-		PhysicalNumber& operator = (const PhysicalNumber &b); // the operator '=' function
 		PhysicalNumber& operator += (const PhysicalNumber &b); //add Physical number to another
 		PhysicalNumber& operator -= (const PhysicalNumber &b); // sub Pysical number from another
 
