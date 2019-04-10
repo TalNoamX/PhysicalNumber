@@ -33,6 +33,8 @@ int main() {
 	PhysicalNumber h_time(4, Unit::HOUR);
 	PhysicalNumber ton(1, Unit::TON);
 	PhysicalNumber kg(500, Unit::KG);
+	PhysicalNumber sec_bool(60, Unit::SEC);
+	PhysicalNumber min_bool(1, Unit::MIN);
 
 
 
@@ -62,6 +64,13 @@ int main() {
 		.CHECK_OUTPUT((a += PhysicalNumber(1, Unit::TON)), "1700[kg]")
 
 		// YOUR TESTS - INSERT AS MANY AS YOU WANT
+
+		/setname("Boolean")
+		.CHECK_OUTPUT(sec_bool == min_bool, "true")
+		.CHECK_OUTPUT(sec_bool >= min_bool, "true")
+		.CHECK_OUTPUT(sec_bool < min_bool, "false")
+		.CHECK_OUTPUT(min_bool > sec_bool, "false")
+	
 
 		.setname("first")
 		.CHECK_OUTPUT(cm_length, "500[cm]")
@@ -146,6 +155,8 @@ int main() {
 		.CHECK_OUTPUT((+m_time), "26[min]")
 		.CHECK_OUTPUT((+sec_time), "58[sec]")
 		.CHECK_OUTPUT((+h_time), "20[min]")
+		.CHECK_OUTPUT(d + c, "150[min]")
+		.CHECK_OUTPUT(d + c, "150[min]")
 
 
 
