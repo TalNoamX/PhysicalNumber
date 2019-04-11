@@ -229,7 +229,7 @@ istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 
 		if ((str.size() <= 6) && (str.size() >= 3))
 		{
-			if ((str.substr(0, 0) == "[") && (str.substr(str.size() - 1, str.size() - 1)== "]"))
+			if ((str.substr(0, 1) == "[") && (str.substr(str.size() - 1, str.size() - 1)== "]"))
 			{
 				string temp = str.substr(1, str.size() - 2);
 					for (int i = 0; i < 9; i++)
@@ -242,13 +242,15 @@ istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 						}
 						
 					}
-				throw std::invalid_argument("error category input >>");
-			}	
-			
+				throw std::invalid_argument("error category input 1 >>");
+			}
+			else {
+				throw std::invalid_argument("error category input 2>>");
+			}
 		}
 		else
 		{
-			throw std::invalid_argument("error category input >>");
+			throw std::invalid_argument("error category input 3>>");
 		}
 		
 	return input;
