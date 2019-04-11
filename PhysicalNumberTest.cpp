@@ -133,7 +133,7 @@ int main() {
 		.setname("fourth")
 
 		.CHECK_OUTPUT(cm_length + km_length, "400050[cm]")
-		.CHECK_OUTPUT(sec_time + m_time, "1560[cm]")
+		.CHECK_OUTPUT(sec_time + m_time, "1560[sec]")
 		.CHECK_OUTPUT(ton + kg, "1.7[ton]")
 		.CHECK_OUTPUT(km_length + cm_length, "4.0005[km]")
 		.CHECK_OUTPUT(h_time - m_time, "19.35[hour]")
@@ -160,7 +160,7 @@ int main() {
 		.CHECK_OUTPUT((+m_time), "26[min]")
 		.CHECK_OUTPUT((+m_time), "26[min]")
 		.CHECK_OUTPUT((+sec_time), "58[sec]")
-		.CHECK_OUTPUT((+h_time), "20[min]")
+		.CHECK_OUTPUT((+h_time), "20[hour]")
 		.CHECK_OUTPUT(d + c, "150[min]")
 		.CHECK_OUTPUT(d + c, "150[min]")
 
