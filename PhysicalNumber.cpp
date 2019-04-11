@@ -112,8 +112,7 @@ bool ariel::PhysicalNumber::operator>=(const PhysicalNumber & b) const
 	{
 		string type1 = type[this->category];
 		string type2 = type[b.category];
-		string exep = "Units do not match - ["+type1+"] cannot be converted to ["+type2+"]";
-		throw invalid_argument(cout << exep);
+		throw invalid_argument("Units do not match - [" + type1 + "] cannot be converted to [" + type2 + "]");
 	}
 }
 
@@ -134,7 +133,7 @@ bool ariel::PhysicalNumber::operator>(const PhysicalNumber & b) const
 	{
 		string type1 = type[this->category];
 		string type2 = type[b.category];
-		throw invalid_argument(Prints "Units do not match - "+type1+"cannot be converted to ");
+		throw invalid_argument("Units do not match - [" + type1 + "] cannot be converted to [" + type2 + "]");
 	}
 }
 
@@ -155,7 +154,7 @@ bool ariel::PhysicalNumber::operator<=(const PhysicalNumber & b) const
 	{
 		string type1 = type[this->category];
 		string type2 = type[b.category];
-		throw invalid_argument(Prints "Units do not match - " + type1 + "cannot be converted to " + type2);
+		throw invalid_argument("Units do not match - [" + type1 + "] cannot be converted to [" + type2+"]");
 	}
 }
 
@@ -176,7 +175,7 @@ bool ariel::PhysicalNumber::operator<(const PhysicalNumber & b) const
 	{
 		string type1 = type[this->category];
 		string type2 = type[b.category];
-		throw invalid_argument(Prints "Units do not match - "+type1+"cannot be converted to "+type2);
+		throw invalid_argument("Units do not match - [" + type1 + "] cannot be converted to [" + type2 + "]");
 	}
 }
 
@@ -197,7 +196,7 @@ bool ariel::PhysicalNumber::operator==(const PhysicalNumber & b) const
 	{
 		string type1 = type[this->category];
 		string type2 = type[b.category];
-		throw invalid_argument(Prints "Units do not match - "+type1+"cannot be converted to "+type2);
+		throw invalid_argument("Units do not match - [" + type1 + "] cannot be converted to [" + type2 + "]");
 	}
 }
 
@@ -218,7 +217,7 @@ bool ariel::PhysicalNumber::operator!=(const PhysicalNumber & b) const
 	{
 		string type1 = type[this->category];
 		string type2 = type[b.category];
-		throw invalid_argument(Prints "Units do not match - "+ type1+"cannot be converted to "+type2);
+		throw invalid_argument("Units do not match - [" + type1 + "] cannot be converted to [" + type2 + "]");
 	}
 }
 
