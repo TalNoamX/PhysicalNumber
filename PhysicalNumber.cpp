@@ -260,7 +260,7 @@ istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 
 		if ((str.size() <= 6) && (str.size() >= 3))
 		{
-			if ((str.substr(0, 1) == "[") && (str.substr(str.size() - 1, str.size() - 1)== "]"))
+			if ((str.substr(0, 1) == "[") && (str.substr(str.size() - 1, 1)== "]"))
 			{
 				string temp = str.substr(1, str.size() - 2);
 					for (int i = 0; i < 9; i++)
