@@ -35,7 +35,8 @@ int main() {
 	PhysicalNumber kg(500, Unit::KG);
 	PhysicalNumber sec_bool(60, Unit::SEC);
 	PhysicalNumber min_bool(1, Unit::MIN);
-
+	PhysicalNumber Gtest(999, Unit::G);
+	
 
 
 	testcase
@@ -119,6 +120,7 @@ int main() {
 		.CHECK_THROWS(istringstream("strrrrrdfsfs") >> m_length)
 		.CHECK_THROWS(istringstream("[[12]]") >> kg)
 		.CHECK_THROWS(istringstream("1[8383]") >> sec_time)
+		.CHECK_THROWS(istringstream("100.2") >> Gtest)
 
 		.setname("third")
 		.CHECK_OK(istringstream("700[kg]") >> kg)
@@ -163,6 +165,8 @@ int main() {
 		.CHECK_OUTPUT((+h_time), "20[hour]")
 		.CHECK_OUTPUT(d + c, "150[min]")
 		.CHECK_OUTPUT(d + c, "150[min]")
+
+			
 
 
 

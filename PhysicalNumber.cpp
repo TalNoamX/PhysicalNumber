@@ -249,6 +249,7 @@ bool ariel::PhysicalNumber::operator!=(const PhysicalNumber & b) const
 
 istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 {
+	PhysicalNumber test(phy);
 	double num = std::numeric_limits<double>::max();
 	string str;
 		input >> num >>str;
@@ -272,14 +273,20 @@ istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 						}
 						
 					}
+					phy.value = test.value;
+					phy.category = test.category;
 				throw std::invalid_argument("error category input 1 >>");
 			}
 			else {
+				phy.value = test.value;
+				phy.category = test.category;
 				throw std::invalid_argument("error category input 2>>");
 			}
 		}
 		else
 		{
+			phy.value = test.value;
+			phy.category = test.category;
 			throw std::invalid_argument("error category input 3>>");
 		}
 		
