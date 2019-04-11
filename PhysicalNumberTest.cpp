@@ -118,7 +118,7 @@ int main() {
 		.CHECK_THROWS(istringstream("14kg") >> kg)
 		.CHECK_THROWS(istringstream("strrrrrdfsfs") >> m_length)
 		.CHECK_THROWS(istringstream("[[12]]") >> kg)
-		.CHECK_THROWS(istringstream("1[min]") >> sec_time)
+		.CHECK_THROWS(istringstream("1[8383]") >> sec_time)
 
 		.setname("third")
 		.CHECK_OK(istringstream("700[kg]") >> kg)
@@ -136,9 +136,9 @@ int main() {
 		.CHECK_OUTPUT(sec_time + m_time, "1560[sec]")
 		.CHECK_OUTPUT(ton + kg, "1.7[ton]")
 		.CHECK_OUTPUT(km_length + cm_length, "4.0005[km]")
-		.CHECK_OUTPUT(h_time - m_time, "19.35[hour]")
+		.CHECK_OUTPUT(h_time - m_time, "19.5833[hour]")
 		.CHECK_OUTPUT(kg + ton ,"1700[kg]")
-		.CHECK_OUTPUT(m_time + h_time, "1161[min]")
+		.CHECK_OUTPUT(m_time + h_time, "1225[min]")
 		
 		
 		.setname("five")
@@ -154,9 +154,9 @@ int main() {
 		.CHECK_THROWS(km_length + kg)
 		.CHECK_THROWS(m_length + ton)
 		.CHECK_OUTPUT((-m_time), "-26[min]")
-		.CHECK_OUTPUT((-m_time), "26[min]")
+		.CHECK_OUTPUT((m_time), "26[min]")
 		.CHECK_OUTPUT((-sec_time), "-58[sec]")
-		.CHECK_OUTPUT((-h_time), "-4[hour]")
+		.CHECK_OUTPUT((-h_time), "-20[hour]")
 		.CHECK_OUTPUT((+m_time), "26[min]")
 		.CHECK_OUTPUT((+m_time), "26[min]")
 		.CHECK_OUTPUT((+sec_time), "58[sec]")
