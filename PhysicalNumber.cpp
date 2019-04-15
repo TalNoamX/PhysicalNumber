@@ -275,19 +275,19 @@ istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 					}
 					phy.value = test.value;
 					phy.category = test.category;
-				throw std::invalid_argument("error category input 1 >>");
+				//throw std::invalid_argument("error category input 1 >>");
 			}
 			else {
 				phy.value = test.value;
 				phy.category = test.category;
-				throw std::invalid_argument("error category input 2>>");
+			//	throw std::invalid_argument("error category input 2>>");
 			}
 		}
 		else
 		{
 			phy.value = test.value;
 			phy.category = test.category;
-			throw std::invalid_argument("error category input 3>>");
+		//	throw std::invalid_argument("error category input 3>>");
 		}
 		
 	return input;
@@ -296,5 +296,5 @@ istream & ariel::operator>>(istream & input,  PhysicalNumber & phy)
 
 ostream & ariel::operator<<(ostream & out,const PhysicalNumber & phy)
 {
-	return (out<<phy.value<<"["<<type[phy.category]<<"]");
+	return (out << phy.value << "[" << type[phy.category] << "]");
 }
